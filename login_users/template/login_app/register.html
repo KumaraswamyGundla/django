@@ -1,0 +1,15 @@
+{% extends 'login_app/base.html'%}
+{% block body_block %}
+  {% if registered %}
+    <h1>Please Register here !</h1>
+  {% else %}
+    <form enctype="multipart/form-data" method="post">
+      <div class="container">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+    </form>
+  {% endif %}
+{% endblock %}

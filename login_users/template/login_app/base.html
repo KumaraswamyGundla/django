@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a href="{% url 'login_app:register' %}">Register</a></li>
+
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'user_logout' %}">Logout</a></li>
+          {% else %}
+            <li><a href="{% url 'login_app:user_login' %}">Login</a></li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block body_block %}
+
+      {% endblock %}
+    </div>
+  </body>
+</html>
